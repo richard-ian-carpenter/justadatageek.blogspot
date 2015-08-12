@@ -9,10 +9,10 @@ This is where I will be posting my R scripts, ~~graphs~~, and data used for my b
 * R scripts will be named sequentially.  Ex.: `blog#script.R`
 * Data will be in `.csv` format.
       * Blog #1 uses:
-            * `pricedata.csv`
-            * `gasprice.csv`
+            `pricedata.csv`
+            `gasprice.csv`
       * Blog #2 uses:
-            * `gc10yrbond.csv`
+            `gc10yrbond.csv`
 * ~~Graphs will be in `.png` format named sequentially by post and order `blog#plot#.png`~~
 
 I tried setting up submodules for each blog post but that didn't work well.  Each time I would add a new one, the previous one would become grayed out and inaccessible.  So, for the time being, I am only including my R scripts and the data I used.  
