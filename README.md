@@ -8,15 +8,19 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
 
 * R scripts will be named sequentially.  Ex.: `blog#script.R`
 * Data will be in `.csv` format.
-      * Blog #1 uses:
-            `pricedata.csv`
-            `gasprice.csv`
-      * Blog #2 uses:
-            `gc10yrbond.csv`
+      * Blog #1 (Gasoline Prices & Quantities) uses:
+            - `pricedata.csv`
+            - `gasprice.csv`
+      * Blog #2 (Greek 10-year Bond Rates) uses:
+            - `gc10yrbond.csv`
+      * Blog #3 (Using `knitr()` function) uses:
+            - No script availble.
+      * Blog #4 (Alcoa Stock Price & LME Aluminum Prices & Quantities) uses:
+            - Data from [Quandl](http://www. quandl.com), as noted in the R script.
       * Blogs #5 and #6 (the "Thesis Research" posts) use:
-            `thesisdata_old.csv`
-            `variables_old.csv`
-            `thesisdata_old.R` <-- R Script
+            - `thesisdata_old.csv`
+            - `variables_old.csv`
+            - `thesisdata_old.R` <-- R Script
             
 
 I tried setting up submodules for each blog post but that didn't work well.  Each time I would add a new one, the previous one would become grayed out and inaccessible.  So, for the time being, I am only including my R scripts and the data I used.  
