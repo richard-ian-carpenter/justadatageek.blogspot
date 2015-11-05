@@ -1,10 +1,10 @@
 # justadatageek.blogspot
 ### R scripts, graphs/plots, and data from my blog, "Just A Data Geek"
 
-* Date Created: 06 August 2015
-* Date Updated: 12 August 2015
+* Date Created: 06 Aug 2015
+* Date Updated: 05 Nov 2015
 
-This is where I will be posting my R scripts, ~~graphs~~, and data used for my blog posts.  The naming convention is explained below.
+This is where I will be posting my R scripts and data used for my blog posts.  The naming convention is explained below.
 
 * R scripts will be named sequentially.  Ex.: `blog#script.R`
 * Data will be in `.csv` format.
@@ -13,7 +13,11 @@ This is where I will be posting my R scripts, ~~graphs~~, and data used for my b
             `gasprice.csv`
       * Blog #2 uses:
             `gc10yrbond.csv`
-* ~~Graphs will be in `.png` format named sequentially by post and order `blog#plot#.png`~~
+      * Blogs #5 and #6 (the "Thesis Research" posts) use:
+            `thesisdata_old.csv`
+            `variables_old.csv`
+            `thesisdata_old.R` <-- R Script
+            
 
 I tried setting up submodules for each blog post but that didn't work well.  Each time I would add a new one, the previous one would become grayed out and inaccessible.  So, for the time being, I am only including my R scripts and the data I used.  
 

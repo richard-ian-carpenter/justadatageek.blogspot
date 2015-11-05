@@ -1,0 +1,40 @@
+varName,varDescription
+date,Date
+wti,"Cushing, OK WTI Spot Price FOB (Dollars per Barrel)"
+brent,Europe Brent Spot Price FOB (Dollars per Barrel)
+convgas_ny,New York Harbor Conventional Gasoline Regular Spot Price FOB (Dollars per Gallon)
+convgas_gulf,U.S. Gulf Coast Conventional Gasoline Regular Spot Price FOB (Dollars per Gallon)
+rbob_la,Los Angeles Reformulated RBOB Regular Gasoline Spot Price (Dollars per Gallon)
+heating_oil,New York Harbor No. 2 Heating Oil Spot Price FOB (Dollars per Gallon)
+diesel_nyc,New York Harbor Ultra-Low Sulfur No 2 Diesel Spot Price (Dollars per Gallon)
+diesel_gulf,U.S. Gulf Coast Ultra-Low Sulfur No 2 Diesel Spot Price (Dollars per Gallon)
+diesel_la,"Los Angeles, CA Ultra-Low Sulfur CARB Diesel Spot Price (Dollars per Gallon)"
+kerosene,U.S. Gulf Coast Kerosene-Type Jet Fuel Spot Price FOB (Dollars per Gallon)
+propane,"Mont Belvieu, TX Propane Spot Price FOB (Dollars per Gallon)"
+mttstus1,U.S. Ending Stocks of Crude Oil and Petroleum Products (Thousand Barrels)
+mtestus1,U.S. Ending Stocks excluding SPR of Crude Oil and Petroleum Products (Thousand Barrels)
+mcrstus1,U.S. Ending Stocks of Crude Oil (Thousand Barrels)
+mcestus1,U.S. Ending Stocks excluding SPR of Crude Oil (Thousand Barrels)
+mcsstus1,U.S. Ending Stocks of Crude Oil in SPR (Thousand Barrels)
+mgtstus1,U.S. Ending Stocks of Total Gasoline (Thousand Barrels)
+mgfstus1,U.S. Ending Stocks of Finished Motor Gasoline (Thousand Barrels)
+mgrstus1,U.S. Ending Stocks of Reformulated Motor Gasoline (Thousand Barrels)
+mg1stnus1,U.S. Ending Stocks of Reformulated Motor Gasoline with Fuel Alcohol (Thousand Barrels)
+mg4stnus1,U.S. Ending Stocks of Conventional Motor Gasoline (Thousand Barrels)
+mg5stnus1,U.S. Ending Stocks of Conventional Motor Gasoline with Fuel Ethanol (Thousand Barrels)
+mg6stnus1,U.S. Ending Stocks of Other Conventional Motor Gasoline (Thousand Barrels)
+mbcstus1,U.S. Ending Stocks of Gasoline Blending Components (Thousand Barrels)
+mkjstus1,U.S. Ending Stocks of Kerosene-Type Jet Fuel (Thousand Barrels)
+mdistus1,U.S. Ending Stocks of Distillate Fuel Oil (Thousand Barrels)
+md0stnus1,"U.S. Ending Stocks of Distillate Fuel Oil, 0 to 15 ppm Sulfur (Thousand Barrels)"
+md1stnus1,"U.S. Ending Stocks of Distillate Fuel Oil, Greater than 15 to 500 ppm Sulfur (Thousand Barrels)"
+mdgstus1,"U.S. Ending Stocks of Distillate Fuel Oil, Greater Than 500 ppm Sulfur (Thousand Barrels)"
+mrestus1,U.S. Ending Stocks of Residual Fuel Oil (Thousand Barrels)
+mprstus1,U.S. Ending Stocks of Propane and Propylene (Thousand Barrels)
+mkestus1,U.S. Ending Stocks of Kerosene (Thousand Barrels)
+mcrfpus1,U.S. Field Production of Crude Oil (Thousand Barrels)
+mcrfpp11,East Coast (PADD 1) Field Production of Crude Oil (Thousand Barrels)
+mcrfpp21,Midwest (PADD 2) Field Production of Crude Oil (Thousand Barrels)
+mcrfpp31,Gulf Coast (PADD 3) Field Production of Crude Oil (Thousand Barrels)
+mcrfpp41,Rocky Mountain (PADD 4) Field Production of Crude Oil (Thousand Barrels)
+mcrfpp51,West Coast (PADD 5) Field Production of Crude Oil (Thousand Barrels)
