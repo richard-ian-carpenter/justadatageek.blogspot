@@ -202,7 +202,7 @@ infStats
 names(compTest) <- c("Lower C.I., 95%", "Upper C.I., 95%")
 compTest
 
-## Testing for autocorrelation, unit root, and stationarity:
+## Testing for autocorrelation:
 #  Autocorrelation:
 #  png("blog6plot2.png", width = 720, height = 720, unit = "px")
 opar <- par(mfrow = c(2, 3))
@@ -215,9 +215,7 @@ acf(brent, type = c("partial"))
 acf(avgConvGas, type = c("partial"))
 par(opar)
 #  dev.off()
-
-## Testing for unit root:
-
+detach(sub1)
 
 ##############################
 #                            #
@@ -225,41 +223,87 @@ par(opar)
 #                            #
 ##############################
 
-## Univariate linear models of gas on the two oil prices:
-#  avgConvGas = b0 + (b1 * wti)
-model1a <- lm(avgConvGas ~ wti, data = sub1)
-#  wti = b0 + (b1 * avgConvGas)
-model1b <- lm(wti ~ avgConvGas, data = sub1)
-#  avgConvGas  = b0 + (b1 * brent)
-model2a <- lm(avgConvGas ~ brent, data = sub1)
-#  brent = b0 + (b1 * avgConvGas)
-model2b <- lm(brent ~ avgConvGas, data = sub1)
-#  avgConvGas = b0 + (b1 * wti) + (b2 * brent)
-model3a <- lm(avgConvGas ~ wti + brent, data = sub1)
-#  wti + brent = b0 + (b1 * avgConvGas)
-model3b <- lm(wti + brent ~ avgConvGas, data = sub1)
+## Testing for unit root:
+attach(sub1)
+gasADFtest <- summary(ur.df(avgConvGas, type = "drift", selectlags = "BIC"))
+wtiADFtest <- summary(ur.df(wti, type = "drift", selectlags = "BIC"))
+brentADFtest <- summary(ur.df(brent, type = "drift", selectlags = "BIC"))
 
-## Looking at the regression output for...
-#  ... Model 1...
-m1a <- summary(model1a) # avgConvGas ~ WTI
-m1b <- summary(model1b) # WTI ~ avgConvGas
-#  ... Model 2...
-m2a <- summary(model2a) # avgConvGas ~ Brent
-m2b <- summary(model2b) # Brent ~ avgConvGas
-#  ... and Model 3...
-m3a <- summary(model3a) # avgConvGas ~ WTI + Brent
-m3b <- summary(model3b) # WTI + Brent ~ avgConvGas
+#  Plotting data again, using ggplot2:
+png("blog7plot1.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plotGas <- ggplot(sub1, aes(x = date, y = avgConvGas))
+plotGas + geom_line() + geom_smooth()
+dev.off()
 
-## Granger causality tests:
-#  ... testing model1 variables, variable in (x, y), order = 1 lag.
-g1a <- grangertest(wti, avgConvGas, order = 1)
-#  ... testing model1 variables, variables in (y, x), order = 1 lag.
-g1b <- grangertest(avgConvGas, wti, order = 1)
-#  ... testing model2 variables, variables in (x, y), order = 1 lag.
-g2a <- grangertest(brent, avgConvGas, order = 1)
-#  ... testing model2 variables, variables in (y, x), order = 1 lag.
-g2b <- grangertest(avgConvGas, brent, order = 1)
-#  ... testing model3 variables, variables in (x, y), order = 1 lag.
-g3a <- grangertest(brent + wti, avgConvGas, order = 1)
-#  ... testing model3 variables, variables in (y, x), order = 1 lag.
-g3b <- grangertest(avgConvGas, brent + wti, order = 1)
+png("blog7plot2.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plotWTI <- ggplot(sub1, aes(x = date, y = wti))
+plotWTI + geom_line() + geom_smooth()
+dev.off()
+
+png("blog7plot3.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plotBrent <- ggplot(sub1, aes(x = date, y = brent))
+plotBrent + geom_line() + geom_smooth()
+dev.off()
+
+#  They will be in your working directory, or comment out the png() and dev.off()
+#  functions to view them on your screen.
+
+## Creating the differenced variables
+diffWTI <- diff(wti)
+diffBrent <- diff(brent)
+diffGas <- diff(avgConvGas)
+
+png("blog7plot4.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plot(diffGas, type = "l", 
+     xlab = "Number of Observations",
+     ylab = "Gas Price",
+     main = "First Difference of Average U.S. Gasoline Price")
+abline(h = mean(diffGas), col = "red")
+dev.off()
+
+png("blog7plot5.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plot(diffWTI, type = "l",
+     xlab = "Number of Observations",
+     ylab = "WTI Crude Price",
+     main = "First Difference of WTI Crude Oil Spot Price")
+abline(h = mean(diffGas), col = "red")
+dev.off()
+
+png("blog7plot6.png", 
+    height = 360,
+    width = 720,
+    unit = "px")
+plot(diffBrent, type = "l",
+     xlab = "Number of Observations",
+     ylab = "Brent Crude Price",
+     main = "First Difference of Brent Crude Oil Spot Price")
+abline(h = mean(diffGas), col = "red")
+dev.off()
+
+##############################
+#                            #
+#   Blog, Part Four          #
+#                            #
+##############################
+
+## Building linear models on the differences.
+model1 <- summary(lm(diffGas ~ diffWTI))
+model2 <- summary(lm(diffGas ~ diffBrent))
+model3 <- summary(lm(diffGas ~ diffWTI + diffBrent))
+
+## Performing the Granger causality tests.
