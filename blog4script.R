@@ -29,7 +29,7 @@ getwd()
 setwd("~/blog/bp4")
 
 ## Setting up Quandl authcode
-authcode <- "qRga9SqGnuPQvvgDyC_z"
+authcode <- ... 
 
 ## Alcoa stock price data and aluminum price data from Quandl.com
 alcoa <- Quandl("GOOG/NYSE_AA", 
