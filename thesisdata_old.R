@@ -51,6 +51,8 @@ rm("date1", "date2", "month", "year") # Clean up!
 ## For publishing functionality, install the following package:
 #  install.packages("knitr")
 library(knitr)
+#  install.packages("stargazer")
+library(stargazer)
 
 ## For graphing functionality beyond the base plot system of R, install the
 #  following packages:
@@ -72,6 +74,7 @@ library(lmtest)
 library(dplyr)
 #  install.packages("reshape2")
 library(reshape2)
+
 
 ####################
 #                  #
@@ -118,7 +121,7 @@ sub1$brent <- (sub1$brent / 42)
 summary(sub1)
 #  ... generating an average of the conventional gas prices.
 sub1$avgConvGas <- (sub1$convgas_ny + sub1$convgas_gulf) / 2
-attach(sub1)
+
 ## Quick plot of the transformed prices:
 #  Conventional Gas (NY), Brent, and WTI Crude prices:
 # Uncomment the png() and dev.off() lines below to create a .png graph, 
@@ -145,7 +148,7 @@ legend("bottomright",
 # dev.off() # Closes device
 ## Correlation
 cor(sub1[, c(2, 3, 13)])
-detach(sub1)
+
 
 ####################
 #                  #
@@ -217,11 +220,11 @@ par(opar)
 #  dev.off()
 detach(sub1)
 
-##############################
-#                            #
-#   Blog, Part Three         #
-#                            #
-##############################
+#########################
+#                       #
+#   Blog, Part Three    #
+#                       #
+#########################
 
 ## Testing for unit root:
 attach(sub1)
@@ -230,29 +233,29 @@ wtiADFtest <- summary(ur.df(wti, type = "drift", selectlags = "BIC"))
 brentADFtest <- summary(ur.df(brent, type = "drift", selectlags = "BIC"))
 
 #  Plotting data again, using ggplot2:
-png("blog7plot1.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot1.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plotGas <- ggplot(sub1, aes(x = date, y = avgConvGas))
 plotGas + geom_line() + geom_smooth()
-dev.off()
+#dev.off()
 
-png("blog7plot2.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot2.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plotWTI <- ggplot(sub1, aes(x = date, y = wti))
 plotWTI + geom_line() + geom_smooth()
-dev.off()
+#dev.off()
 
-png("blog7plot3.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot3.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plotBrent <- ggplot(sub1, aes(x = date, y = brent))
 plotBrent + geom_line() + geom_smooth()
-dev.off()
+#dev.off()
 
 #  They will be in your working directory, or comment out the png() and dev.off()
 #  functions to view them on your screen.
@@ -262,48 +265,87 @@ diffWTI <- diff(wti)
 diffBrent <- diff(brent)
 diffGas <- diff(avgConvGas)
 
-png("blog7plot4.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot4.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plot(diffGas, type = "l", 
      xlab = "Number of Observations",
      ylab = "Gas Price",
      main = "First Difference of Average U.S. Gasoline Price")
 abline(h = mean(diffGas), col = "red")
-dev.off()
+#dev.off()
 
-png("blog7plot5.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot5.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plot(diffWTI, type = "l",
      xlab = "Number of Observations",
      ylab = "WTI Crude Price",
      main = "First Difference of WTI Crude Oil Spot Price")
 abline(h = mean(diffGas), col = "red")
-dev.off()
+#dev.off()
 
-png("blog7plot6.png", 
-    height = 360,
-    width = 720,
-    unit = "px")
+#png("blog7plot6.png", 
+#    height = 360,
+#    width = 720,
+#    unit = "px")
 plot(diffBrent, type = "l",
      xlab = "Number of Observations",
      ylab = "Brent Crude Price",
      main = "First Difference of Brent Crude Oil Spot Price")
 abline(h = mean(diffGas), col = "red")
-dev.off()
+#dev.off()
 
-##############################
-#                            #
-#   Blog, Part Four          #
-#                            #
-##############################
+detach(sub1)
 
-## Building linear models on the differences.
-model1 <- summary(lm(diffGas ~ diffWTI))
-model2 <- summary(lm(diffGas ~ diffBrent))
-model3 <- summary(lm(diffGas ~ diffWTI + diffBrent))
+#######################
+#                     #
+#   Blog, Part Four   #
+#                     #
+#######################
+
+## Building linear models on the non-differenced variables.
+attach(sub1)
+undiffGasWTI <- lm(avgConvGas ~ wti)
+undiffGasBrent <- lm(avgConvGas ~ brent)
+undiffAll <- lm(avgConvGas ~ wti + brent)
+
+#  Using stargazer() to create a nice table or results...
+stargazer(undiffAll, undiffGasWTI, undiffGasBrent, type = "text")
+#  ... for an HTML version, uncomment code below, cut and past the HTML into a 
+#  text editor, save as <filename>.html, then open in browser.
+#  stargazer(undiffAll, undiffGasWTI, undiffGasBrent, type = "html")
+
+## Building linear models on the differenced variables.
+diffGasWTI <- lm(diffGas ~ diffWTI)
+diffGasBrent <- lm(diffGas ~ diffBrent)
+diffAll <- lm(diffGas ~ diffWTI + diffBrent)
+#  Using stargazer() to create a nice table or results...
+stargazer(diffAll, diffGasWTI, diffGasBrent, type = "text")
+#  ... for an HTML version, uncomment code below, cut and past the HTML into a 
+#  text editor, save as <filename>.html, then open in browser.
+#  stargazer(diffAll, diffGasWTI, diffGasBrent, type = "html")
 
 ## Performing the Granger causality tests.
+#  ... using the non-differenced variables...
+gtGasWTI <- grangertest(avgConvGas ~ wti)
+gtWTIgas <- grangertest(wti ~ avgConvGas)
+gtGasBrent <- grangertest(avgConvGas ~ brent)
+gtBrentGas <- grangertest(brent ~ avgConvGas)
+gtGasBoth <- grangertest(avgConvGas ~ c(wti + brent))
+gtBothGas <- grangertest(c(wti + brent) ~ avgConvGas)
+#  stargazer(gtGasWTI, gtWTIgas, gtGasBrent, gtBrentGas, 
+#            gtGasBoth, gtBothGas, type = "text")
+
+#  ... using the differenced variables...
+diff.gtGasWTI <- grangertest(diffGas ~ diffWTI)
+diff.gtWTIgas <- grangertest(diffWTI ~ diffGas)
+diff.gtGasBrent <- grangertest(diffGas ~ diffBrent)
+diff.gtBrentGas <- grangertest(diffBrent ~ diffGas)
+diff.gtGasBoth <- grangertest(diffGas ~ c(diffWTI + diffBrent))
+diff.gtBothGas <- grangertest(c(diffWTI + diffBrent) ~ diffGas)
+#  stargazer(diff.gtGasWTI, diff.gtWTIgas, diff.gtGasBrent, diff.gtBrentGas, 
+#            diff.gtGasBoth, diff.gtBothGas, type = "text")
+detach(sub1)
