@@ -64,4 +64,9 @@ p3 + geom_line() +
     ylim(0, 100)
 dev.off()
     
+# To get the regression line for the third graph...
+l1 <- lm(participation ~ year, data = sorted.df)
 
+# Take the intercept (I rounded to 512) & the slope, and put them into the
+# geom_abline() function...
+l1
