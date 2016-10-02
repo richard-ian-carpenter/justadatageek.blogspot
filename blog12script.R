@@ -57,6 +57,7 @@ dev.off()
 png(paste0(getwd(), "/", "blog12plot3.png"), height = 480, width = 720, unit = "px")
 p3 <- ggplot(data = sorted.df, aes(x = year, y = participation))
 p3 + geom_line() + 
+    geom_abline(intercept = 512, slope = -0.2275, linetype = 4, colour = "blue") +
     xlab("Year") +
     ylab("Participation Rate") +
     ggtitle("Voter Participation Rate, 1964 through 2012") +
