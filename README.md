@@ -27,6 +27,9 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
       * Blog #12 (Voter Participation Rate) uses:
             `voting_stats.csv`
             `blog12script.R`
+      * Blog #14 (Oil Price Visualization) uses:
+      		data from the [EIA](https://www.eia.gov) that was pulled in using my private API code.
+      		`blog14script.R`
 
 
 <br>
