@@ -1,4 +1,4 @@
-# justadatageek.blogspot
+# blog.justadatageek.com 
 ### R scripts, graphs/plots, and data from my blog, "Just A Data Geek"
 
 * Date Created: 06 AUG 2015
@@ -30,8 +30,6 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
       * Blog #14 (Oil Price Visualization) uses:
       		data from the [EIA](https://www.eia.gov) that was pulled in using my private API code.
       		`blog14script.R`
-
-
 <br>
 <br>
 <br>
