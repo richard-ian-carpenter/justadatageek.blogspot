@@ -8,7 +8,7 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
 
 * R scripts will be named sequentially.  Ex.: `blog#script.R`
 * Data will be in `.csv` format.
-      * Blog #1 (Gasoline Prices & Quantities) uses:
+     * Blog #1 (Gasoline Prices & Quantities) uses:
             `pricedata.csv`,
             `gasprice.csv`
       * Blog #2 (Greek 10-year Bond Rates) uses:
