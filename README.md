@@ -11,24 +11,24 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
      * Blog #1 (Gasoline Prices & Quantities) uses:
             `pricedata.csv`,
             `gasprice.csv`
-      * Blog #2 (Greek 10-year Bond Rates) uses:
+     * Blog #2 (Greek 10-year Bond Rates) uses:
             `gc10yrbond.csv`
-      * Blog #3 (Using `knitr()` function) uses:
+     * Blog #3 (Using `knitr()` function) uses:
             No script availble.
-      * Blog #4 (Alcoa Stock Price & LME Aluminum Prices & Quantities) uses:
+     * Blog #4 (Alcoa Stock Price & LME Aluminum Prices & Quantities) uses:
             Data from [Quandl](http://www. quandl.com), as noted in the R script.
-      * Blogs #5, #6, #7, and #8 (the "Thesis Research" posts) use:
+     * Blogs #5, #6, #7, and #8 (the "Thesis Research" posts) use:
             `thesisdata_old.csv`,
             `variables_old.csv`,
             `thesisdata_old.R`
-      * Blog #9 (Philadelphia Eagles 2015 Season) uses:
+     * Blog #9 (Philadelphia Eagles 2015 Season) uses:
             `eagles_2015.csv`
             `eagles_2015.R`
-      * Blog #12 (Voter Participation Rate) uses:
+     * Blog #12 (Voter Participation Rate) uses:
             `voting_stats.csv`
             `blog12script.R`
-      * Blog #14 (Oil Price Visualization) uses:
-      		data from the [EIA](https://www.eia.gov) that was pulled in using my private API code.
+     * Blog #14 (Oil Price Visualization) uses:
+      		data from the [EIA](https://www.eia.gov) that was pulled in using my private API code:
       		`blog14script.R`
 <br>
 <br>
