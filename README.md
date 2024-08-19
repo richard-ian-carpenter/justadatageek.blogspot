@@ -17,7 +17,7 @@ This is where I will be posting my R scripts and data used for my blog posts.  T
             No script availble.
      * Blog #4 (Alcoa Stock Price & LME Aluminum Prices & Quantities) uses:
             Data from [Quandl](https://www.quandl.com), as noted in the R script.
-            **NOTE:** Quandl was acquired by NASDAQ, so the link to Quandl above gets pointed to [NASDAQ's data services](https://data.nasdaq.com/institutional-investors).
+            **NOTE:** Quandl was acquired by NASDAQ, so the link to Quandl above gets pointed to [NASDAQ's data services](https://data.nasdaq.com/individual-users).
      * Blogs #5, #6, #7, and #8 (the "Thesis Research" posts) use:
             `thesisdata_old.csv`,
             `variables_old.csv`,
